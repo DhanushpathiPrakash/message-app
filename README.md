@@ -4,8 +4,10 @@
 A simple messaging application with real-time functionality built with Express.js, Socket.io, and MongoDB.
 
 # Installation Instructions
-1. Clone the repository:
+ Clone the repository:
    git clone https://github.com/your-username/messaging-app.git
+
+#
 
    Install dependencies: <code>npm install</code><br>
 
