@@ -11,11 +11,11 @@ Navigate to the project directory:
 
 # Install dependencies:
 <code>npm install</code><br>
-#Start the server:
+# Start the server:
 <code>node server.js</code>
-#Usage Instructions
-Open your browser and navigate to http://localhost:3000 to use the application.<br>
-Messages will be displayed in real-time, and you can see when other users are typing.<br>
+# Usage Instructions
+<span>Open your browser and navigate to http://localhost:3000 to use the application.</span>
+<span>Messages will be displayed in real-time, and you can see when other users are typing.</span>
 ##Deployment Link
 The application is deployed and can be accessed at: https://messaging-app-nine-plum.vercel.app/
 
