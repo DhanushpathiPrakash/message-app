@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.io Messaging App</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Socket.io Messaging App</h1>
+    <div>
+        <input id="author" type="text" placeholder="Your name">
+        <input id="messageInput" type="text" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <p id="typingIndicator"></p>
+    <ul id="messages"></ul>
+
+    <script>
+        const socket = io();
+
+        // Handle incoming messages
+        socket.on('message', (msg) => {
+            const li = document.createElement('li');
+            li.textContent = `${msg.author}: ${msg.content}`;
+            document.getElementById('messages').appendChild(li);
+        });
+
+        // Initialize with recent messages
+        socket.on('init', (messages) => {
+            messages.forEach(msg => {
+                const li = document.createElement('li');
+                li.textContent = `${msg.author}: ${msg.content}`;
+                document.getElementById('messages').appendChild(li);
+            });
+        });
+
+        // Handle typing indicator
+        socket.on('typing', (author) => {
+            document.getElementById('typingIndicator').textContent = `${author} is typing...`;
+            setTimeout(() => {
+                document.getElementById('typingIndicator').textContent = '';
+            }, 1000);
+        });
+
+        const messageInput = document.getElementById('messageInput');
+        const authorInput = document.getElementById('author');
+
+        messageInput.addEventListener('input', () => {
+            socket.emit('typing', authorInput.value);
+        });
+
+        function sendMessage() {
+            const message = {
+                content: messageInput.value,
+                author: authorInput.value
+            };
+
+            fetch('/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            });
+
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
