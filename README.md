@@ -6,7 +6,7 @@ A simple messaging application with real-time functionality built with Express.j
 ##Installation Instructions
 1. Clone the repository:
    git clone https://github.com/your-username/messaging-app.git
-Navigate to the project directory:
+2.Navigate to the project directory:
 <code>cd messaging-app</code>
 
 # Install dependencies:
