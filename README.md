@@ -28,5 +28,6 @@ A simple messaging application with real-time functionality built with Express.j
    <li>Express.js</li>
    <li>Socket.io</li>
    <li>MongoDB</li>
+   
 # Contributors
    Dhanushpathi Prakash
